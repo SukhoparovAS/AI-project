@@ -30,7 +30,8 @@ pipe = StableDiffusionPipeline(
 )
 pipe = pipe.to(device)
 
-prompt = "sks_person, a photorealistic portrait of a person in high-quality studio lighting."
+# Запрос prompt интерактивно
+prompt = input("Enter prompt: ")
 print("Запрос:", prompt)
 
 with torch.autocast("cuda", dtype=torch.float16):
