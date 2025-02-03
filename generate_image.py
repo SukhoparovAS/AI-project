@@ -30,7 +30,7 @@ pipe = StableDiffusionPipeline(
 )
 pipe = pipe.to(device)
 
-prompt = "A highly detailed, photorealistic portrait of a person featuring sks_person's face, with impeccable lighting, natural skin texture, and realistic details, set in a modern studio environment."
+prompt = "sks_person, a photorealistic portrait of a person in high-quality studio lighting."
 print("Запрос:", prompt)
 
 with torch.autocast("cuda", dtype=torch.float16):

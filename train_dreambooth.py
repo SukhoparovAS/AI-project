@@ -47,7 +47,7 @@ optimizer = torch.optim.AdamW(unet.parameters(), lr=1e-6)
 scaler = torch.cuda.amp.GradScaler(enabled=(device=="cuda"))
 
 # Параметры обучения
-num_train_steps = 500
+num_train_steps = 2000
 accumulation_steps = 1  # обновление весов каждые 2 шага
 step_count = 0
 
@@ -83,7 +83,7 @@ for step in range(num_train_steps):
             latents = vae.encode(pixel_values).latent_dist.sample() * latent_scale
 
             # Сохраняем отладочное изображение каждые 50 шагов
-            if (step_count + 1) % 250 == 0:
+            if (step_count + 1) % 1000 == 0:
                 with torch.no_grad():
                     decoded = vae.decode(latents / latent_scale).sample
                 decoded_img = (decoded.clamp(-1, 1) + 1) / 2  # нормировка в диапазон [0,1]
